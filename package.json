@@ -1,0 +1,19 @@
+{
+  "name": "json_persistence_api",
+  "version": "0.1.0",
+  "description": "an api that saves quotes, using JSON as a persistence layer",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gihub.com/jonullberg/json_persistence_api.git"
+  },
+  "author": "jonathan.ullberg@gmail.com",
+  "license": "MIT"
+}
