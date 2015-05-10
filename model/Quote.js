@@ -2,7 +2,7 @@
 
 var fs = require('fs');
 
-var Quote = function() {}
+var Quote = function() {};
 
 function zeroFill( number, width ) {
   width -= number.toString().length;
@@ -45,32 +45,33 @@ Quote.prototype.save = function(callback) {
 };
 
 Quote.find = function(obj, callback) {
+	var err;
+	var dir = './quotes/';
 	if (obj._id === undefined) {
-		fs.readdir('./quotes/', function(err, files) {
-			for(var i = 0; i < files.length; i++) {
-				fs.readFile('./quotes/' + files[i], function(err, data) {
-					if(err) {
-						console.log(err);
-					}
-					var parsed = data.toString();
-					var jsoned = JSON.parse(parsed);
-					if(typeof callback === 'function') {
-						callback();
-					}
-					console.log(JSON.parse(data.toString()));
-					return data.toString();
+		var returnObj = {};
+		fs.readdir(dir, function(err, files) {
+			if (err) throw err;
+			files.forEach(function(file) {
+				fs.readFile(dir + file, 'utf-8', function(err, data) {
+					returnObj.file = data;
 				});
-			}
+			});
+			console.log(returnObj);
+
 		});
-	} else {
-		fs.readFile('./quotes/' + obj._id + '.json', function(err, data) {
-			console.log(JSON.parse(data.toString()));
-			// if(typeof callback === 'function') {
-			// 	callback();
-			// }
-			return JSON.parse(data.toString());
-		});
+	// } else {
+	// 	fs.readFile('./quotes/' + obj._id + '.json', function(err, data) {
+	// 		console.log(JSON.parse(data));
+	// 		if(typeof callback === 'function') {
+	// 			callback(JSON.parse(data));
+	// 		}
+	// 		// return JSON.parse(data);
+	// 	});
+		if(typeof callback === 'function') {
+			callback(err, returnObj);
+		}
 	}
+	// console.log(returnObj);
 };
 
 Quote.update = function(id, callback) {
