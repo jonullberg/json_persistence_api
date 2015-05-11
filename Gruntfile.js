@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 				src: ['Gruntfile.js', 'router/**/*.js', 'test/**/*.js', 'server.js', 'model/**/*.js']
 			},
 			options: {
-				jshint: '.jshintrc'
+				jshintrc: '.jshintrc'
 			}
 		}
 	});

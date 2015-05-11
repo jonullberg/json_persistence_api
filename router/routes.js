@@ -1,4 +1,4 @@
-'use strict';
+'use strict'; /*jshint strict:false */
 
 var bodyparser = require('body-parser');
 var fs = require('fs');
@@ -38,13 +38,6 @@ module.exports = function(router) {
 	router.put('/quotes/:id', function(req, res) {
 		var updatedQuote = req.body;
 		console.log(updatedQuote);
-		Quote.remove({_id: req.params.id}, function(err) {
-			if(err) {
-				console.log(err);
-				return res.status(500).json({msg: 'internal server error'});
-			}
-		}); 
-
 		Quote.update({_id: req.params.id}, updatedQuote, function(err) {
 			if(err) {
 				console.log(err);

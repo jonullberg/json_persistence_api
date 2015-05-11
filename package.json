@@ -1,7 +1,7 @@
 {
   "name": "json_persistence_api",
   "version": "0.1.0",
-  "description": "an api that saves quotes, using JSON as a persistence layer",
+  "description": "an api that saves quotes, using JSON files as a persistence layer",
   "main": "server.js",
   "directories": {
     "test": "test"
