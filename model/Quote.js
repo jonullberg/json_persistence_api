@@ -44,7 +44,7 @@ Quote.prototype.save = function(callback) {
 	}
 	fs.writeFile('./quotes/' + saveObj.id + '.json', JSON.stringify(saveObj), function(err) {
 		if (err) throw err;
-	})
+	});
 };
 
 Quote.find = function(obj, callback) {
