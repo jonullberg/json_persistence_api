@@ -19,7 +19,6 @@ function idGetter( number, width ) {
 	return id;
 }
 
-
 Quote.prototype.save = function(callback) {
 	if(typeof callback === 'function') {
 		callback();
@@ -41,45 +40,32 @@ Quote.prototype.save = function(callback) {
 			console.log('You\'ve saved your quote');
 		});
 	});
-
 };
 
-Quote.find = function(obj, callback) {
-	var err;
+Quote.find = function(obj) {
 	var dir = './quotes/';
-	if (obj._id === undefined) {
-		var returnObj = {};
-		fs.readdir(dir, function(err, files) {
-			if (err) throw err;
-			files.forEach(function(file) {
-				fs.readFile(dir + file, 'utf-8', function(err, data) {
-					returnObj.file = data;
-				});
-			});
-			console.log(returnObj);
-
-		});
-	// } else {
-	// 	fs.readFile('./quotes/' + obj._id + '.json', function(err, data) {
-	// 		console.log(JSON.parse(data));
-	// 		if(typeof callback === 'function') {
-	// 			callback(JSON.parse(data));
-	// 		}
-	// 		// return JSON.parse(data);
-	// 	});
-		if(typeof callback === 'function') {
-			callback(err, returnObj);
-		}
+	var returnObj;
+	fs.readFile(dir + '0000.json','utf-8', function(err, data) {
+		// console.log(data);
+		returnObj = data;
+	});
+	if (typeof callback === 'function') {
+		console.log(returnObj);
+		callback(returnObj);
 	}
-	// console.log(returnObj);
 };
 
-Quote.update = function(id, callback) {
+Quote.update = function(obj, callback) {
+	var dir = './quotes/';
+	fs.readdir(dir, function(err, files) {
+
+	});
 	console.log('You have run the update method on a quote object');
+
+
 };
 
 Quote.remove = function(obj, callback) {
-	console.log('You have run the remove method on a quote object');
 	var id = obj._id;
 	console.log(id);
 	fs.unlink('./quotes/' + id + '.json', function(err) {
