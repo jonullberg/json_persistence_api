@@ -1,0 +1,1 @@
+This is an app that will use JSON to store quotes.  It takes HTTP requests for GET, POST, PUT, and DELETE and saves quotes in a folder at './quotes/'.
