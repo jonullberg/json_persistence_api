@@ -46,19 +46,6 @@ Quote.prototype.save = function(callback) {
 	});
 };
 
-Quote.find = function(obj, callback) {
-	var dir = './quotes/';
-	var returnObj;
-	fs.readFile(dir + '0000.json','utf-8', function(err, data) {
-		// console.log(data);
-		returnObj = data;
-	});
-	if (typeof callback === 'function') {
-		console.log(returnObj);
-		callback(returnObj);
-	}
-};
-
 Quote.update = function(idObj, updateObj, callback) {
 	var id = idObj._id;
 	var dir = './quotes/';
@@ -68,7 +55,6 @@ Quote.update = function(idObj, updateObj, callback) {
 	updatedQuote.source = updateObj.source;
 	updatedQuote.quoteBody = updateObj.quoteBody;
 	updatedQuote.id = idObj._id;
-
 	updatedQuote.save(function(err) {
 		if(err) throw err;
 	});

@@ -60,8 +60,8 @@ describe('The quote app API', function() {
 			});
 			after(function(done) {
 				fs.unlinkSync(dir + '1000.json');
-				done();;
-			})
+				done();
+			});
 		});
 
 		describe('The DELETE request', function() {
