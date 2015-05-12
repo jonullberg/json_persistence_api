@@ -37,7 +37,6 @@ module.exports = function(router) {
 
 	router.put('/quotes/:id', function(req, res) {
 		var updatedQuote = req.body;
-		console.log(updatedQuote);
 		Quote.update({_id: req.params.id}, updatedQuote, function(err) {
 			if(err) {
 				console.log(err);

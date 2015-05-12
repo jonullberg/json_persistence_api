@@ -38,7 +38,6 @@ Quote.prototype.save = function(callback) {
 			saveObj.id = id;
 			fs.writeFile('./quotes/' + fileName, JSON.stringify(saveObj), function(err) {
 				if(err) throw err;
-				console.log('You\'ve saved your quote');
 			});
 		});
 	}
@@ -69,16 +68,10 @@ Quote.update = function(idObj, updateObj, callback) {
 	updatedQuote.source = updateObj.source;
 	updatedQuote.quoteBody = updateObj.quoteBody;
 	updatedQuote.id = idObj._id;
-	console.log(updatedQuote);
 
 	updatedQuote.save(function(err) {
 		if(err) throw err;
 	});
-	// fs.readdir(dir, function(err, files) {
-
-	// });
-	console.log('You have run the update method on a quote object');
-
 
 };
 
